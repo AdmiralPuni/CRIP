@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="res/css/bootstrap.min.css">
+    <link rel="stylesheet" href="res/icons/bootstrap-icons.css">
+    <style>
+        body {
+            padding-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">CRIP</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="#">Pricing</a>
+                        <a class="nav-link disabled">Disabled</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="" class="img-fluid" alt="Responsive image" id="coin-logo-1">
+                            </div>
+                            <div class="col-md-8 align-middle">
+                                <h2><span class="align-middle" id="coin-name-1">middle</span></h2>
+                            </div>
+                        </div>
+                        <hr>
+                        <table class="table table-hover table-dark">
+                              <tr>
+                                <td>USD</td>
+                                <td id="price-USD-1">$PRICE</td>
+                              </tr>
+                              <tr>
+                                <td>EUR</td>
+                                <td id="price-EUR-1">$PRICE</td>
+                              </tr>
+                              <tr>
+                                <td>JPY</td>
+                                <td id="price-JPY-1">$PRICE</td>
+                              </tr>
+                          </table>
+                    </div>
+                    <div class="card-footer text-muted">
+                        2 days ago
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<script src="res/js/jquery-3.6.0.min.js"></script>
+<script src="res/js/bootstrap.min.js"></script>
+<script>
+
+    $.getJSON('https://api.cryptapi.io/eth/info/', function (data) {
+        $('#coin-name-1').html(data.coin);
+        $("#coin-logo-1").attr("src", data.logo);
+        $('#price-USD-1').html(data.prices.USD);
+        $('#price-EUR-1').html(data.prices.EUR);
+        $('#price-JPY-1').html(data.prices.JPY);
+    });
+
+</script>
+
+</html>
